@@ -23,6 +23,10 @@
     "summaryTip": "点击此行进行统计",
     "actions": "Actions"
   },
+  "preview": {
+    "previewFileLimit": "Preview file size limit: {{size}}MB, please download to view instead.",
+    "loadFileError": "Failed to load file"
+  },
   "undoRedo": {
     "undo": "Undo",
     "redo": "Redo",
