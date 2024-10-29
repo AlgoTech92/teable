@@ -34,7 +34,9 @@
     "loadMore": "加载更多",
     "collapseSidebar": "折叠侧边栏",
     "restore": "Restore",
-    "permanentDelete": "Permanent Delete"
+    "permanentDelete": "Permanent Delete",
+    "globalSearch": "Global Search",
+    "fieldSearch": "Field Search"
   },
   "quickAction": {
     "title": "快捷搜索...",
@@ -129,7 +131,8 @@
     "license": "许可证",
     "instanceId": "实例 ID",
     "beta": "测试版",
-    "trash": "Trash"
+    "trash": "Trash",
+    "global": "Global"
   },
   "level": {
     "free": "免费版",
@@ -142,6 +145,7 @@
   "name": "名称",
   "description": "描述",
   "required": "必填",
+  "atLeastOne": "At least reserve a {{noun}}",
   "guide": {
     "prev": "上一步",
     "next": "下一步",
