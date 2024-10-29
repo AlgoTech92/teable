@@ -41,6 +41,7 @@
     "cancel": "Cancel",
     "save": "Save",
     "requireLogin": "Require login submit",
+    "ExpirationSetting": "Expiration Setting",
     "theme": {
       "label": "Theme",
       "light": "Light",

@@ -21,6 +21,7 @@
         "embedPreview": "Embed preview",
         "hideToolbar": "Hide toolbar",
         "URLSetting": "URL parameters config",
+        "ExpirationSetting": "Expiration Setting",
         "URLSettingDescription": "Adjusting the following settings will not affect the shared links. You need to copy the link with new parameters to make it take effect",
         "cancel": "Cancel",
         "save": "Save",

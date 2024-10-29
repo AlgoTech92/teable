@@ -1,6 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 import { sharePasswordSchema, type IShareViewMeta, ViewType } from '@teable/core';
-import { Edit, RefreshCcw, Qrcode } from '@teable/icons';
+import { TimeFormatting } from '@teable/core';
+import { Edit, RefreshCcw, Qrcode, Calendar } from '@teable/icons';
+import { DateEditorMain } from '@teable/sdk';
 import { useTablePermission, useView } from '@teable/sdk/hooks';
 import type { View } from '@teable/sdk/model';
 import {
@@ -312,6 +314,47 @@ export const SharePopover: React.FC<{
               )}
             </div>
             {embed && <Textarea className="h-20 font-mono text-xs" value={embedHtml} readOnly />}
+            <hr />
+            <div>
+              <p className="text-sm">{t('table:toolbar.others.share.ExpirationSetting')}</p>
+
+              <div className="flex items-center gap-2 pt-2">
+                {/* {value && (
+                  <p className="text-sm">
+                    {dayjs(value)
+                      .tz(tz)
+                      .format(timeEnabled ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD')}
+                  </p>
+                )} */}
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" size={'xs'}>
+                      <Calendar className="size-4" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="flex w-auto border-none p-0 outline-none">
+                    <DateEditorMain
+                      className="rounded-md border bg-background"
+                      fromDate={new Date()}
+                      style={{
+                        maxHeight: 'auto',
+                      }}
+                      value={shareMeta?.expireTime}
+                      options={{
+                        formatting: {
+                          date: 'YYYY-MM-DD',
+                          time: TimeFormatting.Hour24,
+                          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                        },
+                      }}
+                      onChange={(newValue) => {
+                        console.log('newValue || new Date().toISOString()');
+                      }}
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
             <div className="flex gap-4">
               <Label className="text-xs" htmlFor="share-password">
                 {t('common:settings.setting.theme')}
