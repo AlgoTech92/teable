@@ -34,7 +34,9 @@
     "loadMore": "Загрузить еще",
     "collapseSidebar": "Свернуть боковую панель",
     "restore": "Restore",
-    "permanentDelete": "Permanent Delete"
+    "permanentDelete": "Permanent Delete",
+    "globalSearch": "Global Search",
+    "fieldSearch": "Field Search"
   },
   "quickAction": {
     "title": "Быстрые действия...",
@@ -129,7 +131,8 @@
     "license": "Лицензия",
     "instanceId": "ID экземпляра",
     "beta": "Beta",
-    "trash": "Trash"
+    "trash": "Trash",
+    "global": "Global"
   },
   "level": {
     "free": "Бесплатно",
@@ -142,6 +145,7 @@
   "name": "Имя",
   "description": "Описание",
   "required": "Требуется",
+  "atLeastOne": "At least reserve a {{noun}}",
   "guide": {
     "prev": "Назад",
     "next": "Далее",
