@@ -414,8 +414,8 @@
     }
   },
   "menu": {
-    "insertRecordAbove": "Вставить запись выше",
-    "insertRecordBelow": "Вставить запись ниже",
+    "insertRecordAbove": "Insert <input /> record above",
+    "insertRecordBelow": "Insert <input /> record below",
     "copyCells": "Копировать ячейки",
     "deleteRecord": "Удалить запись",
     "deleteAllSelectedRecords": "Удалить все выбранные записи",
@@ -425,7 +425,10 @@
     "freezeUpField": "Заморозить до этого поля",
     "hideField": "Скрыть поле",
     "deleteField": "Удалить поле",
-    "deleteAllSelectedFields": "Удалить все выбранные поля"
+    "deleteAllSelectedFields": "Удалить все выбранные поля",
+    "filterField": "Filter by this field",
+    "sortField": "Sort by this field",
+    "groupField": "Group by this field"
   },
   "connection": {
     "title": "Подключение к базе данных",
