@@ -371,7 +371,8 @@
   },
   "grid": {
     "prefillingRowTitle": "Добавить новую запись",
-    "prefillingRowTooltip": "Пожалуйста, введите данные новой записи ниже. Запись будет сохранена автоматически, как только вы нажмете вне этой строки."
+    "prefillingRowTooltip": "Пожалуйста, введите данные новой записи ниже. Запись будет сохранена автоматически, как только вы нажмете вне этой строки.",
+    "presortRowTitle": "This record has been filtered or moved due to sorting rules"
   },
   "form": {
     "fieldsManagement": "Поля",
@@ -455,7 +456,11 @@
       "title": "Повреждение!",
       "description": "Этот вид нарушен. Если обновление до сих пор не удалось, пожалуйста, свяжитесь с нами support@teable.io"
     },
-    "addPluginView": "Add Plugin View"
+    "addPluginView": "Add Plugin View",
+    "search": {
+      "field_one": "{{name}}",
+      "field_other": "{{name}} and {{length}} other fields"
+    }
   },
   "lastModifiedTime": "Время последнего изменения",
   "lastModify": "Последнее изменение: ",
