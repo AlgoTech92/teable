@@ -371,7 +371,8 @@
   },
   "grid": {
     "prefillingRowTitle": "新建记录",
-    "prefillingRowTooltip": "请在下方输入新记录的数据。当焦点离开当前行后，数据将自动保存。"
+    "prefillingRowTooltip": "请在下方输入新记录的数据。当焦点离开当前行后，数据将自动保存。",
+    "presortRowTitle": "This record has been filtered or moved due to sorting rules"
   },
   "form": {
     "fieldsManagement": "字段管理",
@@ -455,7 +456,11 @@
       "title": "Crash!",
       "description": "This view is broken. If the refresh still fails, please contact us. support@teable.io"
     },
-    "addPluginView": "Add Plugin View"
+    "addPluginView": "Add Plugin View",
+    "search": {
+      "field_one": "{{name}}",
+      "field_other": "{{name}} and {{length}} other fields"
+    }
   },
   "lastModifiedTime": "修改时间",
   "lastModify": "上次修改：",
