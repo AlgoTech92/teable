@@ -279,7 +279,9 @@
       "automationUpdate": "更新自动化",
       "userEmailRead": "查看用户电子邮件",
       "recordHistoryRead": "Read record history",
-      "baseQuery": "Query base"
+      "baseQuery": "Query base",
+      "instanceRead": "Read instance",
+      "instanceUpdate": "Update instance"
     }
   },
   "noun": {
@@ -292,7 +294,8 @@
     "automation": "自动化",
     "user": "用户",
     "recordHistory": "Record History",
-    "you": "You"
+    "you": "You",
+    "instance": "Instance"
   },
   "formula": {
     "SUM": {
