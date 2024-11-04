@@ -450,7 +450,8 @@
     "category": {
       "table": "表格视图",
       "form": "表单视图",
-      "kanban": "看板视图"
+      "kanban": "看板视图",
+      "gallery": "Gallery View"
     },
     "crash": {
       "title": "Crash!",
