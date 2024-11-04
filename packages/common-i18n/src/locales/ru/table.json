@@ -450,7 +450,8 @@
     "category": {
       "table": "Сетка",
       "form": "Форма просмотра",
-      "kanban": "Kanban Просмотр"
+      "kanban": "Kanban Просмотр",
+      "gallery": "Gallery View"
     },
     "crash": {
       "title": "Повреждение!",
