@@ -158,7 +158,7 @@
     "createTableTooltipTitle": "Создать таблицу",
     "createTableTooltipContent": "Таблицы предназначены для эффективной обработки разнообразных наборов данных, позволяющих разносторонне отображать информацию через различные типы данных.",
     "createViewTooltipTitle": "Создать вид",
-    "createViewTooltipContent": "В настоящее время пользователи могут создавать просмотры сетки и формы, с Галереей, Канбаном и Календарь виды, запланированные для будущих выпусков. <br></br>Этот сорт предоставляет пользователям полный набор инструментов для различных задач управления данными.",
+    "createViewTooltipContent": "Currently, users can create Grid, Gallery, Kanban and Form views, with Calendar views planned for future releases. <br></br>This variety equips users with a comprehensive toolkit for various data management tasks.",
     "viewFilteringTooltipTitle": "Фильтрация записей",
     "viewFilteringTooltipContent": "Одной из основных особенностей представлений является возможность отфильтровать записи из вида в соответствии с установленными условиями. <br></br>Когда запись отфильтрована по условию, он не удалён — он просто скрыт из того определенного вида, который вы используете для просмотра вашей таблицы.",
     "viewSortingTooltipTitle": "Сортировка записей",
