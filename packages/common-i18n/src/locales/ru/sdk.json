@@ -179,6 +179,7 @@
   },
   "expandRecord": {
     "copy": "Копировать в буфер обмена",
+    "duplicateRecord": "Duplicate record",
     "copyRecordUrl": "Копировать URL записи",
     "deleteRecord": "Удалить запись",
     "recordHistory": {
