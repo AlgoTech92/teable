@@ -179,6 +179,7 @@
   },
   "expandRecord": {
     "copy": "复制到剪贴板",
+    "duplicateRecord": "Duplicate record",
     "copyRecordUrl": "Copy record URL",
     "deleteRecord": "Delete record",
     "recordHistory": {
