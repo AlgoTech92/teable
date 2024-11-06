@@ -411,7 +411,8 @@
       "insertCardAbove": "在上方插入卡片",
       "insertCardBelow": "在下方插入卡片",
       "expandCard": "展开卡片",
-      "deleteCard": "删除卡片"
+      "deleteCard": "删除卡片",
+      "duplicateCard": "Duplicate card"
     }
   },
   "menu": {
