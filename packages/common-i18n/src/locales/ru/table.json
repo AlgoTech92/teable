@@ -411,7 +411,8 @@
       "insertCardAbove": "Вставить карту выше",
       "insertCardBelow": "Вставить карту ниже",
       "expandCard": "Раскрыть карту",
-      "deleteCard": "Удалить карту"
+      "deleteCard": "Удалить карту",
+      "duplicateCard": "Duplicate card"
     }
   },
   "menu": {
