@@ -1,4 +1,4 @@
-import { useFields } from '../../../../hooks/use-fields';
+import type { useFields } from '../../../../hooks/use-fields';
 
 export const getFormulaPrompt = (prompt: string, fields: ReturnType<typeof useFields>) => {
   const context = fields.map((field) => `${field.id}: ${field.name}`).join('\n');

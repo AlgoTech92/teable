@@ -1,6 +1,6 @@
+import { createOpenAI } from '@ai-sdk/openai';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { createOpenAI } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 
 @Injectable()
@@ -14,10 +14,9 @@ export class AiService {
       baseURL: openAIBaseUrl,
       apiKey: openaiApiKey,
     });
-    const result = await streamText({
+    return await streamText({
       model: openai('gpt-4o-mini'),
       prompt: prompt,
     });
-    return result;
   }
 }

@@ -14,7 +14,9 @@ import type { FC } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from '../../../context/app/i18n';
 import { useFieldStaticGetter, useFields } from '../../../hooks';
+import { useAIStream } from '../../../hooks/use-ai';
 import { FormulaField } from '../../../model';
+import { MagicAI } from '../../comment/comment-editor/plate-ui/icons';
 import type { ICodeEditorRef } from './components';
 import { CodeEditor, FunctionGuide, FunctionHelper } from './components';
 import {
@@ -33,8 +35,6 @@ import type {
 } from './interface';
 import { SuggestionItemType } from './interface';
 import { FormulaNodePathVisitor } from './visitor';
-import { useAIStream } from '../../../hooks/use-ai';
-import { MagicAI } from '../../comment/comment-editor/plate-ui/icons';
 
 interface IFormulaEditorProps {
   expression?: string;
@@ -369,7 +369,7 @@ export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full border-b-[1px] caret-foreground">
+      <div className="flex w-full flex-col border-b-DEFAULT caret-foreground">
         <CodeEditor
           ref={editorRef}
           value={expressionByName}

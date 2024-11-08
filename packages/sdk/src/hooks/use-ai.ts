@@ -1,6 +1,6 @@
 import { useCallback, useState, useRef } from 'react';
 
-const API_ENDPOINT = '/api/ai';
+const aiApiEndpoint = '/api/ai';
 
 interface IUseAIStreamOptions {
   timeout?: number; // unit: ms
@@ -22,9 +22,10 @@ export const useAIStream = (options?: IUseAIStreamOptions) => {
     const timeoutId = setTimeout(() => controllerRef.current?.abort(), timeout);
 
     try {
-      const result = await fetch(API_ENDPOINT, {
+      const result = await fetch(aiApiEndpoint, {
         method: 'POST',
         headers: {
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
@@ -38,9 +39,13 @@ export const useAIStream = (options?: IUseAIStreamOptions) => {
       const reader = result.body?.getReader();
       if (!reader) throw new Error('No reader available');
 
-      while (true) {
+      let reading = true;
+      while (reading) {
         const { done, value } = await reader.read();
-        if (done) break;
+        if (done) {
+          reading = false;
+          break;
+        }
 
         const chunk = new TextDecoder().decode(value);
         setText((prev) => prev + chunk);
