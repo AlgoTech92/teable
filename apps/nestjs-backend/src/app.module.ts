@@ -35,6 +35,7 @@ import { GlobalModule } from './global/global.module';
 import { InitBootstrapProvider } from './global/init-bootstrap.provider';
 import { LoggerModule } from './logger/logger.module';
 import { WsModule } from './ws/ws.module';
+import { AiModule } from './features/ai/ai.module';
 
 export const appModules = {
   imports: [
@@ -66,6 +67,7 @@ export const appModules = {
     PluginModule,
     DashboardModule,
     CommentOpenApiModule,
+    AiModule,
   ],
   providers: [InitBootstrapProvider],
 };
