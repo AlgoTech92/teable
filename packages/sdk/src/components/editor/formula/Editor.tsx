@@ -11,27 +11,30 @@ import { CharStreams } from 'antlr4ts';
 import Fuse from 'fuse.js';
 import { cloneDeep, keyBy } from 'lodash';
 import type { FC } from 'react';
-import { useRef, useState, useMemo, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from '../../../context/app/i18n';
 import { useFieldStaticGetter, useFields } from '../../../hooks';
 import { FormulaField } from '../../../model';
 import type { ICodeEditorRef } from './components';
-import { FunctionGuide, FunctionHelper, CodeEditor } from './components';
+import { CodeEditor, FunctionGuide, FunctionHelper } from './components';
 import {
-  Type2IconMap,
   FOCUS_TOKENS_SET,
-  useFunctionsDisplayMap,
+  Type2IconMap,
   useFormulaFunctionsMap,
+  useFunctionsDisplayMap,
 } from './constants';
 import { THEME_EXTENSIONS, TOKEN_EXTENSIONS, getVariableExtensions } from './extensions';
-import { SuggestionItemType } from './interface';
+import { getFormulaPrompt } from './extensions/ai';
 import type {
   IFocusToken,
   IFuncHelpData,
   IFunctionCollectionItem,
   IFunctionSchema,
 } from './interface';
+import { SuggestionItemType } from './interface';
 import { FormulaNodePathVisitor } from './visitor';
+import { useAIStream } from '../../../hooks/use-ai';
+import { MagicAI } from '../../comment/comment-editor/plate-ui/icons';
 
 interface IFormulaEditorProps {
   expression?: string;
@@ -63,6 +66,13 @@ export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
     [formulaFunctionsMap]
   );
   const functionsDisplayMap = useFunctionsDisplayMap();
+  const { generateAIResponse, text, loading } = useAIStream();
+
+  useEffect(() => {
+    if (text) {
+      setExpressionByName(text);
+    }
+  }, [text]);
 
   const filteredFields = useMemo(() => {
     const fuse = new Fuse(fields, {
@@ -329,20 +339,44 @@ export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
     }
   };
 
+  const handleGenerateFormula = useCallback(() => {
+    if (!expressionByName || loading) return;
+    if (expressionByName.startsWith('//')) {
+      generateAIResponse(getFormulaPrompt(expressionByName.slice(2), fields));
+    }
+  }, [expressionByName, fields, loading]);
   const codeBg = isLightTheme ? 'bg-slate-100' : 'bg-gray-900';
+
+  // only generate formula when the expression starts with //
+  const isReadyToGenerate = expressionByName.startsWith('//');
 
   return (
     <div className="w-[620px]">
       <div className="flex h-12 w-full items-center justify-between border-b-DEFAULT pl-4 pr-2">
-        <h1 className="text-base">{t('editor.formula.title')}</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-base">{t('editor.formula.title')}</h1>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={handleGenerateFormula}
+            disabled={!isReadyToGenerate || loading}
+          >
+            <MagicAI
+              className={cn('w-4 h-4', loading && 'animate-[pulse_1s_ease-in-out_infinite]')}
+              active={isReadyToGenerate || loading}
+            />
+          </Button>
+        </div>
       </div>
-      <div className={cn('flex flex-col w-full border-b-[1px] caret-foreground', codeBg)}>
+
+      <div className="flex flex-col w-full border-b-[1px] caret-foreground">
         <CodeEditor
           ref={editorRef}
           value={expressionByName}
           extensions={extensions}
           onChange={onValueChange}
           onSelectionChange={onSelectionChange}
+          placeholder={t('editor.formula.placeholder')}
         />
         <div className="h-5 w-full truncate px-2 text-xs text-destructive">{errMsg}</div>
       </div>
