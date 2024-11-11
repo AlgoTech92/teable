@@ -10,6 +10,16 @@ export interface IServerEnv {
   socialAuthProviders?: string[];
   storagePrefix?: string;
   edition?: string;
+
+  // global settings
+  globalSettings?: {
+    disallowSignUp?: boolean;
+    disallowSpaceCreation?: boolean;
+    disallowSpaceInvitation?: boolean;
+    aiConfig?: {
+      enable: boolean;
+    };
+  };
 }
 
 export const EnvContext = React.createContext<IServerEnv>({});
