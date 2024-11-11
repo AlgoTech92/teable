@@ -35,14 +35,16 @@ import type {
 } from './interface';
 import { SuggestionItemType } from './interface';
 import { FormulaNodePathVisitor } from './visitor';
+import { AlertCircle } from 'lucide-react';
 
 interface IFormulaEditorProps {
   expression?: string;
   onConfirm?: (expression: string) => void;
+  enableAI?: boolean;
 }
 
 export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
-  const { expression, onConfirm } = props;
+  const { expression, onConfirm, enableAI } = props;
   const fields = useFields({ withHidden: true, withDenied: true });
   const { resolvedTheme } = useTheme();
   const { t } = useTranslation();
@@ -66,7 +68,7 @@ export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
     [formulaFunctionsMap]
   );
   const functionsDisplayMap = useFunctionsDisplayMap();
-  const { generateAIResponse, text, loading } = useAIStream();
+  const { generateAIResponse, text, loading, error } = useAIStream();
 
   useEffect(() => {
     if (text) {
@@ -355,17 +357,27 @@ export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
       <div className="flex h-12 w-full items-center justify-between border-b-DEFAULT pl-4 pr-2">
         <div className="flex items-center gap-2">
           <h1 className="text-base">{t('editor.formula.title')}</h1>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={handleGenerateFormula}
-            disabled={!isReadyToGenerate || loading}
-          >
-            <MagicAI
-              className={cn('w-4 h-4', loading && 'animate-[pulse_1s_ease-in-out_infinite]')}
-              active={isReadyToGenerate || loading}
-            />
-          </Button>
+          {enableAI && (
+            <div className="flex items-center gap-1">
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={handleGenerateFormula}
+                disabled={!isReadyToGenerate || loading}
+              >
+                <MagicAI
+                  className={cn('w-4 h-4', loading && 'animate-[pulse_1s_ease-in-out_infinite]')}
+                  active={isReadyToGenerate || loading}
+                />
+              </Button>
+              {error && (
+                <div className="flex items-center gap-1 text-xs text-destructive">
+                  <AlertCircle className="h-3 w-3" />
+                  <span>{error}</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
@@ -376,7 +388,7 @@ export const FormulaEditor: FC<IFormulaEditorProps> = (props) => {
           extensions={extensions}
           onChange={onValueChange}
           onSelectionChange={onSelectionChange}
-          placeholder={t('editor.formula.placeholder')}
+          placeholder={enableAI ? t('editor.formula.placeholder') : undefined}
         />
         <div className="h-5 w-full truncate px-2 text-xs text-destructive">{errMsg}</div>
       </div>
