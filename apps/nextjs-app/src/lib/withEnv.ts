@@ -15,27 +15,12 @@ type GetServerSideProps<
   D extends PreviewData = PreviewData,
 > = (context: GetServerSidePropsContext<Q, D>) => Promise<GetServerSidePropsResult<P>>;
 
-async function fetchPublicConfig(context?: GetServerSidePropsContext) {
-  try {
-    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-    const host = context?.req?.headers?.host || 'localhost:3000';
-    const url = `${protocol}://${host}/api/admin/setting/public`;
-    console.log('fetchPublicConfig', url);
-    const response = await fetch(url);
-    return await response.json();
-  } catch (error) {
-    console.error('Failed to fetch public config:', error);
-    return {};
-  }
-}
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function withEnv<P extends { [key: string]: any }>(
   handler: GetServerSideProps<P, ParsedUrlQuery, PreviewData>
 ): NextGetServerSideProps<P> {
   return async (context: GetServerSidePropsContext) => {
     const { driver } = parseDsn(process.env.PRISMA_DATABASE_URL as string);
-    const publicConfig = await fetchPublicConfig(context);
     const env = omitBy(
       {
         driver,
@@ -46,7 +31,6 @@ export default function withEnv<P extends { [key: string]: any }>(
         sentryDsn: process.env.SENTRY_DSN,
         socialAuthProviders: process.env.SOCIAL_AUTH_PROVIDERS?.split(','),
         storagePrefix: process.env.STORAGE_PREFIX,
-        globalSettings: publicConfig,
       },
       isUndefined
     );
