@@ -229,14 +229,15 @@
       "baseNoPermission": "No permission base",
       "noLinkTip": "Нет связанных записей для поиска. Добавьте ссылку на другое поле записи, затем попробуйте настроить поиск снова.",
       "fieldValidationRules": "Правила валидации значений поля",
-      "enableValidateFieldUnique": "Включить проверку уникальности значений",
-      "enableValidateFieldNotNull": "Включить проверку на ненулевые значения",
+      "enableValidateFieldUnique": "Forbid duplicate values",
+      "enableValidateFieldNotNull": "Forbid non-empty values",
       "knowMore": "узнать больше",
       "linkFieldKnowMoreLink": "https://help.teable.io/product/fields/field-type/link",
       "filterByView": "Filter records by view",
       "filter": "Filter records",
       "hideFields": "Hide fields",
-      "moreOptions": "More options"
+      "moreOptions": "More options",
+      "allowNewOptionsWhenEditing": "Allow new options when editing"
     },
     "subTitle": {
       "link": "Ссылка на записи в выбранной вами таблице",
