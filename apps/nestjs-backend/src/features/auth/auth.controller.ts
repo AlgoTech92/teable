@@ -15,9 +15,9 @@ import {
 import { Response, Request } from 'express';
 import { AUTH_SESSION_COOKIE_NAME } from '../../const';
 import { ZodValidationPipe } from '../../zod.validation.pipe';
+import { Permissions } from '../auth/decorators/permissions.decorator';
 import { AuthService } from './auth.service';
 import { Public } from './decorators/public.decorator';
-import { TokenAccess } from './decorators/token.decorator';
 import { LocalAuthGuard } from './guard/local-auth.guard';
 import { pickUserMe } from './utils';
 
@@ -63,7 +63,7 @@ export class AuthController {
   }
 
   @Get('/user')
-  @TokenAccess()
+  @Permissions('user|read')
   async user(@Req() request: Express.Request) {
     return this.authService.getUserInfo(request.user as IUserMeVo);
   }
