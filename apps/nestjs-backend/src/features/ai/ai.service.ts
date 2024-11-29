@@ -1,7 +1,7 @@
 import { createOpenAI } from '@ai-sdk/openai';
 import { Injectable } from '@nestjs/common';
-import { SettingService } from '../setting/setting.service';
 import { streamText } from 'ai';
+import { SettingService } from '../setting/setting.service';
 
 export enum Task {
   Translation = 'translation',
@@ -12,6 +12,7 @@ export enum Task {
 export class AiService {
   constructor(private readonly settingService: SettingService) {}
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   static taskModelMap = {
     [Task.Coding]: 'codingModel',
     [Task.Translation]: 'translationModel',

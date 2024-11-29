@@ -3,8 +3,8 @@ import type { ISettingVo } from '@teable/openapi';
 import { IUpdateSettingRo, updateSettingRoSchema } from '@teable/openapi';
 import { ZodValidationPipe } from '../../zod.validation.pipe';
 import { Permissions } from '../auth/decorators/permissions.decorator';
-import { SettingService } from './setting.service';
 import { Public } from '../auth/decorators/public.decorator';
+import { SettingService } from './setting.service';
 
 @Controller('api/admin/setting')
 export class SettingController {
