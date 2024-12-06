@@ -1,7 +1,7 @@
 {
   "brand": "Teable",
   "actions": {
-    "title": "actions",
+    "title": "Actions",
     "save": "保存",
     "doNotSave": "不保存",
     "submit": "提交",
